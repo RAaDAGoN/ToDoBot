@@ -20,7 +20,7 @@ public class DeadlineNotifier {
         this.sendBotMessageService = sendBotMessageService;
     }
 
-    @Scheduled(fixedRate = 360000)
+    @Scheduled(fixedRate = 60000)
     public void notifyUsers(){
         LocalDateTime now = LocalDateTime.now();
         LocalDateTime soon = now.plusHours(48);

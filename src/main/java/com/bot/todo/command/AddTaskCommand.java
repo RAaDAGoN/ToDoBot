@@ -30,9 +30,14 @@ public class AddTaskCommand implements Command {
     @Override
     public void execute(Update update) {
         long chatId = update.getMessage().getChatId();
-        String[] parts = update.getMessage().getText().split(" ", 3);
+        String[] parts = update.getMessage().getText().split(" ");
 
         try {
+            if (parts.length < 3) {
+                sendBotMessageService.sendMessage(String.valueOf(chatId), "Неверный формат команды. Пример: /addtask Текст задачи 25.07.2025");
+                return;
+            }
+
             User user = userService.findByChatId(chatId);
             if (user == null) {
                 user = new User();
@@ -41,13 +46,19 @@ public class AddTaskCommand implements Command {
                 userService.saveUser(user);
             }
 
+            StringBuilder taskTextBuilder = new StringBuilder();
+            for (int i = 1; i < parts.length - 1; i++) {
+                taskTextBuilder.append(parts[i]).append(" ");
+            }
+            String taskText = taskTextBuilder.toString().trim();
+
             DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd.MM.yyyy");
-            String date = parts[2];
+            String date = parts[parts.length - 1];
 
             LocalDateTime deadline = LocalDate.parse(date, formatter).atStartOfDay();
 
             Task task = new Task();
-            task.setDescription(parts[1]);
+            task.setDescription(taskText);
             task.setUser(user);
             task.setDeadline(deadline);
             task.setCompleted(false);
