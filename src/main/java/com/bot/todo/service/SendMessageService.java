@@ -1,13 +1,10 @@
 package com.bot.todo.service;
 
-
-import lombok.SneakyThrows;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.telegram.telegrambots.meta.api.methods.send.SendMessage;
 import org.telegram.telegrambots.meta.api.methods.updatingmessages.EditMessageText;
 import org.telegram.telegrambots.meta.api.objects.replykeyboard.InlineKeyboardMarkup;
-import org.telegram.telegrambots.meta.exceptions.TelegramApiException;
 import org.telegram.telegrambots.meta.generics.TelegramClient;
 
 
@@ -32,7 +29,7 @@ public class SendMessageService implements SendBotMessageService {
         try {
             telegramClient.execute(sendMessage);
         } catch (Exception e) {
-            System.out.printf("Ошибка отправки сообщения: %s", e.getMessage());
+            System.out.printf("Ошибка отправки сообщения: %s\n", e.getMessage());
         }
     }
 
@@ -49,7 +46,7 @@ public class SendMessageService implements SendBotMessageService {
         try {
             telegramClient.execute(sendMessage);
         } catch (Exception e) {
-            System.out.printf("Ошибка отправки сообщения: %s", e.getMessage());
+            System.out.printf("Ошибка отправки сообщения: %s\n", e.getMessage());
         }
     }
 
@@ -67,7 +64,7 @@ public class SendMessageService implements SendBotMessageService {
         try {
             telegramClient.execute(editMessage);
         } catch (Exception e) {
-            System.out.printf("Ошибка изменения сообщения: %s", e.getMessage());
+            System.out.printf("Ошибка изменения сообщения: %s\n", e.getMessage());
         }
     }
 }

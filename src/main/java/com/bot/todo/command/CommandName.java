@@ -3,11 +3,11 @@ package com.bot.todo.command;
 public enum CommandName {
     START("/start"),
     HELP("/help"),
-    NO("nocommand"),
-    ADDTASK("/addtask"),
+    NO("noCommand"),
+    ADDTASK("/addTask"),
     LISTTASK("/listtask"),
-    SELECTTASK("/selecttask"),
-    EDITTASK("/edittask");
+    SELECTTASK("/selectTask"),
+    EDITTASK("/editTask");
 
     private final String commandName;
 
