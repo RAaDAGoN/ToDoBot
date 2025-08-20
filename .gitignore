@@ -31,3 +31,9 @@ build/
 
 ### VS Code ###
 .vscode/
+
+### 🔐 Secrets ###
+# Локальные конфиги — НЕ пушить в GitHub
+src/main/resources/application.properties
+src/main/resources/application.yml
+.env

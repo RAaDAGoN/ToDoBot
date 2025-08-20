@@ -63,12 +63,12 @@ public class ToDoBot implements SpringLongPollingBot, LongPollingSingleThreadUpd
                 Long taskId = Long.parseLong(data.split(":")[1]);
                 taskService.deleteByIdAndChatId(taskId, chatId);
                 sendBotMessageService.sendMessage(chatId.toString(), "Задача удалена");
-            } else if (data.startsWith("edit:")){
+            } else if (data.startsWith("edit:")) {
                 Long taskId = Long.parseLong(data.split(":")[1]);
 
                 SelectTaskCommand selectTaskCommand = new SelectTaskCommand(taskService, sendBotMessageService);
                 selectTaskCommand.handleEditCallback(chatId, taskId);
-            }else if (data.startsWith("selectTask:")) {
+            } else if (data.startsWith("selectTask:")) {
                 Long taskId = Long.parseLong(data.split(":")[1]);
 
                 SelectTaskCommand selectTaskCommand = new SelectTaskCommand(taskService, sendBotMessageService);
