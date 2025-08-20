@@ -4,10 +4,10 @@ public enum CommandName {
     START("/start"),
     HELP("/help"),
     NO("noCommand"),
-    ADDTASK("/addTask"),
+    ADDTASK("/addtask"),
     LISTTASK("/listtask"),
-    SELECTTASK("/selectTask"),
-    EDITTASK("/editTask");
+    SELECTTASK("/selecttask"),
+    EDITTASK("/edittask");
 
     private final String commandName;
 
